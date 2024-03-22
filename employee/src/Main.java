@@ -20,6 +20,17 @@ public class Main {
        // so.oldestEmployee();
        // so.youngFemale();
       //  so.greaterThan30andLessThan30();
-        so.getDeptNameForHighestEmpNo();
+      //  so.getDeptNameForHighestEmpNo();
+       // so.ifEmpPresentHR();
+       // so.departmentOver3();
+        // so.getDistinctDeptName();
+       // so.getBlrEmp();
+       // so.totalEmp();
+       // so.totalEmpDept();
+       // so.highestEmp();
+      //  so.sortAgeNAme();
+       // so.highExpEmp();
+       // so.avgTotalSalary();
+        so.avgSalaryByDept();
     }
 }

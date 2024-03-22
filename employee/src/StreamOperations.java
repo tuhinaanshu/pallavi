@@ -5,7 +5,7 @@ public class StreamOperations {
     public List<Employee> getEmpList(){
         List<Employee> empList = new ArrayList<>();
         empList.add(new Employee(1, "abc", 28, 123, "F", "HR", "Blore", 2020));
-        empList.add(new Employee(2, "xyz", 29, 120, "F", "HR", "Hyderabad", 2015));
+        empList.add(new Employee(2, "xyz", 29, 120, "F", "HR", "Hydrabad", 2015));
         empList.add(new Employee(3, "efg", 30, 115, "M", "HR", "Chennai", 2014));
         empList.add(new Employee(4, "def", 32, 125, "F", "HR", "Chennai", 2013));
         empList.add(new Employee(5, "ijk", 22, 150, "F", "IT", "Noida", 2013));
@@ -114,9 +114,13 @@ public class StreamOperations {
 
     }
 
+
+
     public void greaterThan30andLessThan30(){
 
-//        List<Employee> employeeListgreatThan30= getEmpList().stream().filter(s->  s.getAge() >30).toList();
+      //  List<Employee> employeeListgreatThan30= getEmpList().stream().filter(s->  s.getAge() >30).toList();
+
+
 //        List<Employee> employeeListLessThan30= getEmpList().stream().filter(s->  s.getAge() <30).toList();
 //        System.out.println(employeeListLessThan30);
 //        System.out.println(employeeListgreatThan30);
@@ -137,7 +141,86 @@ public class StreamOperations {
         System.out.println( deptName.entrySet().stream().max(Map.Entry.comparingByValue()).get());
        // System.out.println(
     }
+
+    public void ifEmpPresentHR(){
+
+        /*long isPresent= getEmpList().stream().filter(s-> s.getDeptName().equalsIgnoreCase("Hr")).collect(Collectors.counting());
+        if (isPresent > 0){
+            System.out.println("HR dept is there");*/
+    //}
+
+        Optional<Employee> emp= getEmpList().stream().filter(w-> w.getDeptName().equalsIgnoreCase("HR"))
+                .findAny();
+        emp.ifPresent(employee -> System.out.println("Found employees from HR department " + employee));
+
+    }
+
+
+    public void departmentOver3(){
+         getEmpList().stream().collect(Collectors.groupingBy(Employee::getDeptName,Collectors.counting())).
+        entrySet().stream().filter(entry -> entry.getValue() > 3).forEach(System.out::println);
+
+    }
+
+    public void getDistinctDeptName(){
+        getEmpList().stream().map(Employee::getDeptName).distinct().collect(Collectors.toList()).forEach(System.out::println);
+
+    }
+
+    public void getBlrEmp(){
+      getEmpList().stream().filter(s-> s.getCity().equalsIgnoreCase("Blore")).sorted(Comparator.comparing(Employee::getName)).collect(Collectors.toList()).forEach(System.out::println);
+
+
+    }
+
+    public void totalEmp(){
+
+       long total= getEmpList().stream().count();
+        System.out.println(total);
+    }
+
+    public void totalEmpDept(){
+
+        System.out.println(getEmpList().stream().collect(Collectors.groupingBy(Employee::getDeptName,Collectors.counting())));
+
+
+    }
+
+    public  void highestEmp(){
+
+        Optional<Map.Entry<String, Long>> i= getEmpList().stream().collect(Collectors.groupingBy(Employee::getDeptName,Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue());
+
+        if(i.isPresent()){
+            System.out.println(i.get());
+        }
+    }
+
+    public void sortAgeNAme(){
+
+        getEmpList().stream().sorted(Comparator.comparing(Employee::getName).thenComparing(Employee::getAge)).collect(Collectors.toList()).forEach(System.out::println);
+
+    }
+
+    public void highExpEmp(){
+
+        System.out.println(getEmpList().stream().sorted(Comparator.comparing(Employee::getYearOfJoining)).findFirst().get());
+    }
+
+
+    public void avgTotalSalary(){
+
+        DoubleSummaryStatistics swq= getEmpList().stream().collect(Collectors.summarizingDouble(Employee::getSalary));
+        System.out.println(swq.getSum());
+        System.out.println(swq.getAverage());
+    }
+
+    //ques 23
+    public void avgSalaryByDept(){
+        Map<String,Double> avgsalaryDept= getEmpList().stream().collect(Collectors.groupingBy(Employee::getDeptName,Collectors.averagingDouble(Employee::getSalary)));
+        System.out.println(avgsalaryDept);
+    }
 }
+
 
 
 
