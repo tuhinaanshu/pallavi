@@ -31,6 +31,17 @@ public class Main {
       //  so.sortAgeNAme();
        // so.highExpEmp();
        // so.avgTotalSalary();
-        so.avgSalaryByDept();
+       // so.avgSalaryByDept();
+      //  so.highestSalary();
+       // so.secondHighestSalary();
+        //so.NthHighestSalary();
+        //so.getHighSalaryByGender();
+       // so.getLowSalaryByGender();
+        //so.sortByAscSalary();
+       // so.sortBydescSalary();
+       // so.highestsaleryBasedOndept();
+       // so.secondHighByDept();
+      //  so.sortSalaryByDeptAsc();
+        so.sortSalaryByDeptDesc();
     }
 }
