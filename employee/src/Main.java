@@ -18,6 +18,8 @@ public class Main {
        // so.avgMaleFemaleEmpAge();
        // so.noOfEmpByDept();
        // so.oldestEmployee();
-        so.youngFemale();
+       // so.youngFemale();
+      //  so.greaterThan30andLessThan30();
+        so.getDeptNameForHighestEmpNo();
     }
 }
