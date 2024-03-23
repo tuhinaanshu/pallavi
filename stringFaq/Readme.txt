@@ -1,5 +1,6 @@
 How do you reverse a given string in place? (solution)
 How do you print duplicate characters from a string? (solution)
+Count the number of I in India
 How do you check if two strings are anagrams of each other? (solution)
 How do you find all the permutations of a string? (solution)
 How can a given string be reversed using recursion? (solution)
